@@ -1,0 +1,44 @@
+---
+layout: default
+refactor: true
+---
+
+<div class="row">
+
+    <div id="post-list" class="flex-grow-1 px-xl-1">
+        <aside id="related-posts" aria-labelledby="related-label">
+            <h3 class="mb-4" id="related-label">Games</h3>
+            <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+                {% for post in site.posts %}
+                    {% if post.path contains 'games' %}
+                        <article class="col">
+                            <a href="{{ post.url | relative_url }}" class="post-preview card h-100">
+                                {% assign src = post.image.path | default: post.image %}
+                                <div class="card-body" style="padding: 0;">
+                                    <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+                                </div>
+                            </a>
+                        </article>
+                    {% endif %}
+                {% endfor %}
+            </nav>
+        </aside>
+        <aside id="related-posts" aria-labelledby="related-label">
+            <h3 class="mb-4" id="related-label">Comission Games</h3>
+            <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+                {% for post in site.posts %}
+                    {% if post.path contains 'commissions' %}
+                        <article class="col">
+                            <a href="{{ post.url | relative_url }}" class="post-preview card h-100">
+                                {% assign src = post.image.path | default: post.image %}
+                                <div class="card-body" style="padding: 0;">
+                                    <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}>
+                                </div>
+                            </a>
+                        </article>
+                    {% endif %}
+                {% endfor %}
+            </nav>
+        </aside>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
+    <meta name="theme-color" media="dark" content="#1b1b1e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+    >
+
+    <title>
+        {%- unless page.layout == 'home' -%}
+          {{ page.title | append: ' | ' }}
+        {%- endunless -%}
+        {{ site.title }}
+    </title>
+    {% include favicons.html %}
+    <!-- Bootstrap -->
+  <link rel="stylesheet" href="{{ site.data.origin[type].bootstrap.css | relative_url}}">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
+
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | replace: ':THEME', site.theme | relative_url }}">
+
+  {% if page.layout == 'post' or page.layout == 'game' or page.layout == 'page' or page.layout == 'home' %}
+    <link rel="stylesheet" href="{{ site.data.origin[type]['lazy-polyfill'].css | relative_url }}">
+    {% endif %}
+    
+    {% if page.layout == 'page' or page.layout == 'post' or page.layout == 'game' %}
+    <!-- Manific Popup -->
+    <link rel="stylesheet" href="{{ site.data.origin[type].magnific-popup.css | relative_url }}">
+  {% endif %}
+
+     <!-- JavaScript -->
+
+    {% unless site.theme_mode %}
+        {% include mode-toggle.html %}
+    {% endunless %}
+
+</head>    
