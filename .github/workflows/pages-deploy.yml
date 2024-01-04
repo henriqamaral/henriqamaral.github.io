@@ -59,12 +59,12 @@ jobs:
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "_site$henriqamaral/henriqamaral.github.io"
+          path: "_site${{ steps.pages.outputs.base_path }}""
 
   deploy:
     environment:
       name: github-pages
-      url: henriqamaral.github.io
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
